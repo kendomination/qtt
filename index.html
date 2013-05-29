@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.css" />
+	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height, target-densitydpi=device-dpi" />
+	<link rel="stylesheet" href="css/jquery.mobile-1.2.0.min.css" />
+	<script src="js/jquery-1.8.2.min.js"></script>
+	<script src="js/jquery.mobile-1.2.0.min.js"></script>
+	<script src="js/index.js"></script>
+	<script src="js/date.js"></script>
+	<script language="javascript" type="text/javascript" src="js/jquery.jqplot.min.js"></script>	
+	<script type="text/javascript" src="js/jqplot.pointLabels.min.js"></script>
+	<script type="text/javascript">
+	<script type="text/javascript" src="cordova-2.7.0.js"></script>
+	$.plotdata = {};
+	function setCharAt(str,index,chr) {
+		if(index > str.length-1) return str;
+		return str.substr(0,index) + chr + str.substr(index+1);
+	}
+	
+	  $('#frm_viewgraph').live('pageshow', function() {	
+		$('#frm_viewgraph').page();
+		if(easy.length >= 1 || medium.length >=1 || hard.length >= 1){
+			$.jqplot('chartdiv',  [easy,medium,hard] ,
+			{ 	title:'QTT Typing Progress',
+				axes:{yaxis:{min:0,label:'WPM'},xaxis:{min:0,label:'Tries',tickOptions:{formatString:'%d'},tickInterval:1}},
+				series:[{label:'Beginner'},{label:'Novice'},{label:'Hard'}],
+				seriesColors:['red','green','blue'],
+				legend:{show:true}
+			});		
+		}
+});
+	</script>
+</head>
+<body>
+
+
+<!-- Start of first page -->
+<div data-role="page" data-theme="a" id="frm_main">
+
+	
+
+	<div data-role="content">
+	<br>
+	<br>
+		<img src="images/logo.png" width="200" height="100" style="display: block; margin-left:auto;margin-right:auto" /><br>
+		<a href="#frm_difficulty" data-transition="pop" data-role="button" data-rel="dialog">START TYPING</a>
+		
+		<a href="#frm_about" data-rel="dialog" data-role="button" data-transition="pop" >ABOUT</a>
+		
+		<a href="#frm_lastresult" data-rel="dialog" data-role="button" data-transition="pop" onclick = "getLevel()">TOP SPEEDS</a>
+		
+		<a href="#frm_viewgraph" data-rel="dialog" data-role="button" data-transition="pop" onclick = "plot()">VIEW PROGRESS</a>
+		<a href="#frm_worldtopscores" data-rel="dialog" data-role="button" data-transition="pop">WORLD TOP SCORES</a>
+		
+		
+	</div><!-- /content -->
+	
+	<div data-role="footer" data-position="fixed">
+			<div data-role="actionbar" >
+					<div data-role="action">
+							
+					</div>
+					
+				
+			</div>
+	</div>
+</div><!-- /page -->
+
+
+<!-- Start of second page -->
+<div data-role="page" id="frm_difficulty">
+
+	<div data-role="header">
+		<h3></h3>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p style="font-size: 3.5em;"><strong>Choose Difficulty</strong></p>
+		<a href="#frm_qtt" data-role="button" onClick="s()" >BEGINNER</a>
+		<a href="#frm_qtt" data-role="button" onClick="m()" >NOVICE</a>
+		<a href="#frm_qtt" data-role="button" onClick="e()" >HARD</a>
+		<p style="font-size: 2em;"><strong>Available on FULL VERSION:</strong></p>
+		<a href="#frm_fullver" data-role="button" class="ui-disabled">MASTER</a>
+		<a href="#frm_fullver" data-role="button" class="ui-disabled">SUPER HARD</a>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+<!-- Start of third page -->
+<div data-role="page" id="frm_about">
+
+	<div data-role="header">
+		<h3></h3>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p style="font-size: 3.5em"><strong>About</strong></p>
+				<p style="font-size: 3em">Ever wondered how fast you can type in the qwerty pad of BlackBerry? Worry no further this application is for you. Have fun and improve your typing skills in BlackBerry with QTT. Features: FREE Very easy to use. Improves your typing speed. Perfect for competitions and Skill Assessment.</p>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+<!-- Start of third page -->
+<div data-role="page" id="frm_viewgraph">
+
+	<div data-role="header">
+		<h3></h3>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<div id="chartdiv" style="height:400px;width:450px; "></div>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+<!-- Start of fourth page -->
+<div data-role="page" id="frm_worldtopscores">
+
+	<div data-role="header">
+		<h3></h3>
+	</div><!-- /header -->
+
+	<div data-role="content">
+		<p style="font-size: 3.5em"><strong>World Top Scores</strong></p>
+		<img src="images/qtt_topscore.png" style="display: block; margin-left: auto; margin-right: auto;"/>
+				<p style="font-size: 3em">See how fast your QWERTY Typing skills as compared to other people all over the world, try to be the number one. Available in the full version.</p>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+<!-- Start of fifth page -->
+<div data-role="page" id="frm_qtt" data-theme="a">
+
+	<div data-role="header">
+		<h3 id="txtlevel" style="text-align: center">LEVEL</h3>
+	</div>
+
+	<div data-role="content">
+	<p style="font-size: 1.5em; text-align: center;"> Click <strong>START</strong> to begin then Press <strong>DONE</strong> when finished typing </p>
+		<form name="theForm">
+		
+		<a href="#typingarea" onClick="beginIt()" name="start" data-role="button">START</a>
+		<textarea name="given" onFocus="cheat()" style="width:700px; height:200px" disabled></textarea>
+		<input type=text name="typed"  style="width:700px; height:200px"  />
+		<a href="#" data-role="button"  onClick="stopIt()">DONE</a>
+		
+		</form>
+		
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+<!-- Start of result page -->
+<div data-role="page" id="frm_result">
+
+	<div data-role="header">
+		<h3 id="txtlevel" style="text-align: center">Result</h3>
+	</div>
+
+	<div data-role="content">
+					
+		<p style="font-size: 3.5em; text-align: justify;" name="name_result" id="txtresult">result</p>
+		<a href="#frm_difficulty" data-rel="dialog" data-role="button" data-transition="pop" >Try Again</a>
+		<a href="#frm_main" data-role="button" >Main Menu</a>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+<!-- Start of last  result -->
+<div data-role="page" id="frm_lastresult">
+
+	<div data-role="header">
+		<h3 id="txtlevel" style="text-align: center">Top Speeds</h3>
+	</div>
+
+	<div data-role="content">
+	<p id = "easy">
+	</p>
+	<p id = "medium">
+	</p>
+	<p id = "hard">
+	</p>
+	</div><!-- /content -->
+
+	
+</div><!-- /page -->
+
+
+</body>
+</html>

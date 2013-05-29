@@ -1,0 +1,13 @@
+{
+  "name": "QTT",
+  "description": "A Contest to See who types the fastest",
+  "launch_path": "/index.html",
+  "icons": {
+    "128": "/icon.png"
+  },
+  "developer": {
+    "name": "Kamote Empire",
+    "url": "http://kamoterulestheuniverse.blogspot.com"
+  },
+  "default_locale": "en"
+}

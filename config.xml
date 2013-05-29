@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<widget xmlns="http://w3.org/ns/widgets" xmlns:rim="http://www.blackberry.com/ns/widgets" version="2.0.0.0" id="BOCO">
+
+
+<name>Qwerty Typing Test</name>
+<author>Kamote Empire</author>
+<icon src="icon.png" />
+<content src="index.html" />
+<feature id="blackberry.app">
+    <param name="orientation" value="portrait" />
+</feature>
+
+
+</widget>
