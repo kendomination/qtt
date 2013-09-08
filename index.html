@@ -5,7 +5,7 @@
 	<link rel="stylesheet" type="text/css" href="css/jquery.jqplot.css" />
 	<meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height" />
 
-<link rel="stylesheet" href="css/BlackBerry-JQM-all-1.0.0.css" />
+	<link rel="stylesheet" href="css/BlackBerry-JQM-all-1.0.0.css" />
     <script src="js/BlackBerry-JQM-all-1.0.0.js"></script>
 	<script src="js/index.js"></script>
 	<script src="js/date.js"></script>
@@ -15,56 +15,53 @@
 	<script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="http://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
 	
 	<div id="fb-root"></div>
-<script>(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));</script>
+	<script>
+	(function(d, s, id) {
+		var js, fjs = d.getElementsByTagName(s)[0];
+		if (d.getElementById(id)) return;
+			js = d.createElement(s); js.id = id;
+			js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+			fjs.parentNode.insertBefore(js, fjs);
+	}
+	(document, 'script', 'facebook-jssdk'));
+	</script>
 
-		<script type="text/javascript">
+	<script type="text/javascript">
 	$.plotdata = {};
 	function setCharAt(str,index,chr) {
 		if(index > str.length-1) return str;
 		return str.substr(0,index) + chr + str.substr(index+1);
 	}
-	
-	  $('#frm_viewgraph').live('pageshow', function() {	
-		$('#frm_viewgraph').page();
-		if(easy.length >= 1 || medium.length >=1 || hard.length >= 1){
-			$.jqplot('chartdiv',  [easy,medium,hard] ,
+	$('#frm_viewgraph').live('pageshow', function() {	
+	$('#frm_viewgraph').page();
+	if(easy.length >= 1 || medium.length >=1 || hard.length >= 1){
+		$.jqplot('chartdiv',  [easy,medium,hard] ,
 			{ 	title:'QTT Typing Progress',
 				axes:{yaxis:{min:0,label:'WPM'},xaxis:{min:0,label:'Tries',tickOptions:{formatString:'%d'},tickInterval:1}},
 				series:[{label:'Beginner'},{label:'Novice'},{label:'Hard'}],
 				seriesColors:['red','green','blue'],
 				legend:{show:true}
 			});		
-		}
-});
+	}
+	});
 	</script>
-</head>
-<body>
-
-
-<!-- Start of first page -->
-<div data-role="page" data-theme="a" id="frm_main">
-
 	
+</head>
 
-	<div data-role="content">
+<body>
+	<!-- Start of first page -->
+	<div data-role="page" data-theme="a" id="frm_main">
+
+		<div data-role="content">
 			<!-- Volume-->
 			<div data-role="fieldcontain">
-				<label for="flip-off">Sounds</label>
-				<br>
+				<label for="flip-off">Sounds</label><br>
 				<select name="slider" id="flip-on" data-role="slider">
 					<option value="on">On</option>
 					<option value="off">Off</option>
 				</select>
 			</div>
-
-		<img src="images/fin.png"  style="display: block; margin-left:auto;margin-right:auto ; max-width:100%; max-height:auto"/><br>
-	<br>
+		<img src="images/fin.png"  style="display: block; margin-left:auto;margin-right:auto ; max-width:100%; max-height:auto"/><br><br>
 
 		<ul  data-role="listview" data-divider-theme="a" >
 
@@ -75,179 +72,169 @@
 			<li><a href="#frm_worldtopscores" data-transition="pop" style="text-align:center;">LEADERBOARDS</a></li>
 		
 		</ul>
+		</div><br><br>
+	
+		<p>Like QTypingTest on Facebook</p> <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FQTypingTest&amp;width=400&amp;height=21&amp;colorscheme=dark&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:21px;" allowTransparency="true"></iframe>
+	
+		<p>Follow QTypingTest on Twitter:</p>	<a href="http://twitter.com/QTypingTest" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @QTypingTest</a>
+		
+	</div><!-- /content -->
+	</div><!-- /page -->
+	
+	<!-- Start of second page -->
+	<div data-role="page"  data-theme="a" id="frm_difficulty">
+
+		<div data-role="header">	
+			<h1 > Choose Difficulty</h1>
+		</div><!-- /header -->
+
+		<div data-role="content">
+<center>
+			<a href="#frm_qtt" onClick="s()" ><img src="images/buttons/BEGINNER.png"/></a><br>
+			<a href="#frm_qtt"  onClick="m()" ><img src="images/buttons/novice.png"/></a><br>
+			<a href="#frm_qtt" onClick="e()" ><img src="images/buttons/hard.png"/></a>	<br>	
+			<a href="#frm_qtt"  data-role="button" onClick="l()" >UNLIMITED</a><br>
+			<p style="font-size: 1em;" ><strong>Available on FULL VERSION:</strong></p><br>
+			<a href="#frm_fullver" class="ui-disabled"><img src="images/buttons/master.png"/></a><br>
+			<a href="#frm_fullver"  class="ui-disabled"><img src="images/buttons/super hard.png"/></a><br>
+	</center>	
+		</div><!-- /content -->
+	
+		<div data-role="footer" >
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+	
+	</div><!-- /page -->
+
+	<!-- Start of third page -->
+	<div data-role="page" data-theme="a" id="frm_about">
+
+		<div data-role="header">
+			<h3>About</h3>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<p style="font-size: 1em">Ever wondered how fast you can type in the qwerty pad of BlackBerry? Worry no further this application is for you. Have fun and improve your typing skills in BlackBerry with QTT. Features: FREE Very easy to use. Improves your typing speed. Perfect for competitions and Skill Assessment.</p>
+		</div><!-- /content -->
+		<div data-role="footer"data-position="fixed" >
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
 		</div>
 		
-			
+	</div><!-- /page -->
 
-	<br>
-	<br>
-	
-	<p>Like QTypingTest on Facebook</p> <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fwww.facebook.com%2FQTypingTest&amp;width=400&amp;height=21&amp;colorscheme=dark&amp;layout=button_count&amp;action=like&amp;show_faces=false&amp;send=false" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:400px; height:21px;" allowTransparency="true"></iframe>
-	
-	<p>Follow QTypingTest on Twitter:</p>	<a href="http://twitter.com/QTypingTest" class="twitter-follow-button" data-show-count="false" data-lang="en" data-size="large">Follow @QTypingTest</a>
-	</div><!-- /content -->
-	
+	<!-- Start of third page -->
+	<div data-role="page" data-theme="a" id="frm_viewgraph">
 
-</div><!-- /page -->
+		<div data-role="header">
+			<h3>Progress</h3>
+		</div><!-- /header -->
 
+		<div data-role="content">
+			<div id="chartdiv" style="height:400px;width:450px; "></div>
+		</div><!-- /content -->
 
-<!-- Start of second page -->
-<div data-role="page"  data-theme="a" id="frm_difficulty">
-
-	<div data-role="header">
-	
-		<h1 > Choose Difficulty</h1>
-	</div><!-- /header -->
-
-	<div data-role="content">
-
-		<a href="#frm_qtt" data-role="button" onClick="s()" >BEGINNER</a>
-		<a href="#frm_qtt" data-role="button" onClick="m()" >NOVICE</a>
-		<a href="#frm_qtt" data-role="button" onClick="e()" >HARD</a>
-		 <center>
-		<p style="font-size: 1em;" ><strong>Available on FULL VERSION:</strong></p>
-		</center>
-		<a href="#frm_fullver" data-role="button" class="ui-disabled">MASTER</a>
-		<a href="#frm_fullver" data-role="button" class="ui-disabled">SUPER HARD</a>
-	</div><!-- /content -->
-<div data-role="footer" >
-				<div id="action-bar-area" data-role="actionbar">
-					<div data-role="back"></div>
-				</div>
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
 			</div>
-	
-</div><!-- /page -->
-
-<!-- Start of third page -->
-<div data-role="page" data-theme="a" id="frm_about">
-
-	<div data-role="header">
-		<h3>About</h3>
-	</div><!-- /header -->
-
-	<div data-role="content">
-
-				<p style="font-size: 1em">Ever wondered how fast you can type in the qwerty pad of BlackBerry? Worry no further this application is for you. Have fun and improve your typing skills in BlackBerry with QTT. Features: FREE Very easy to use. Improves your typing speed. Perfect for competitions and Skill Assessment.</p>
-	</div><!-- /content -->
-<div data-role="footer" data-position="fixed">
-				<div id="action-bar-area" data-role="actionbar">
-					<div data-role="back"></div>
-				</div>
-			</div>
-</div><!-- /page -->
-
-<!-- Start of third page -->
-<div data-role="page" data-theme="a" id="frm_viewgraph">
-
-	<div data-role="header">
-		<h3>Progress</h3>
-	</div><!-- /header -->
-
-	<div data-role="content">
-		<div id="chartdiv" style="height:400px;width:450px; "></div>
-	</div><!-- /content -->
-
-<div data-role="footer" data-position="fixed">
-				<div id="action-bar-area" data-role="actionbar">
-					<div data-role="back"></div>
-				</div>
-			</div>
-</div><!-- /page -->
-
-<!-- Start of fourth page -->
-<div data-role="page" data-theme="a" id="frm_worldtopscores">
-
-	<div data-role="header">
-		<h3>World Top Scores</h3>
-	</div><!-- /header -->
-
-	<div data-role="content">
-
-		<img src="images/qtt_topscore.png" style="display: block; margin-left: auto; margin-right: auto;"/>
-				<p>See how fast your QWERTY Typing skills as compared to other people all over the world, try to be the number one. Available in the full version.</p>
-	</div><!-- /content -->
-	
-<div data-role="footer" data-position="fixed">
-				<div id="action-bar-area" data-role="actionbar">
-					<div data-role="back"></div>
-				</div>
-			</div>
-	
-	
-</div><!-- /page -->
-
-<!-- Start of fifth page -->
-<div data-role="page" id="frm_qtt"  data-theme="a">
-
-	<div data-role="header">
-		<h3 id="txtlevel" style="text-align: center">LEVEL</h3>
-	</div>
-
-	<div data-role="content">
-	<p style="font-size: 1em; text-align: center;"> Click <strong>START</strong> to begin then Press <strong>DONE</strong> when finished typing </p>
-		<form name="theForm" style="width:700 ;height:768px">
+		</div>
 		
-		<a href="#typingarea" onClick="beginIt()" name="start" data-role="button" data-inline="true">START</a> 
-			<a href="#" data-role="button"  onClick="stopIt()"  data-inline="true">DONE</a>
-		<textarea name="given" onFocus="cheat()" style="width:700px; height:200px; resize: none;" disabled></textarea>
-		<input type="text" name="typed"  style="width:700px; height:200px"  />
-		</form>
-		
-	</div><!-- /content -->
+	</div><!-- /page -->
 
+	<!-- Start of fourth page -->
+	<div data-role="page" data-theme="a" id="frm_worldtopscores">
+
+		<div data-role="header">
+			<h3>World Top Scores</h3>
+		</div><!-- /header -->
+
+		<div data-role="content">
+			<img src="images/qtt_topscore.png" style="display: block; margin-left: auto; margin-right: auto;"/>
+			<p>See how fast your QWERTY Typing skills as compared to other people all over the world, try to be the number one. Available in the full version.</p>
+		</div><!-- /content -->
 	
-</div><!-- /page -->
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
+			</div>
+		</div>
+		
+	</div><!-- /page -->
 
-<!-- Start of result page -->
-<div data-role="page"  data-theme="a"  id="frm_result">
+	<!-- Start of fifth page -->
+	<div data-role="page" id="frm_qtt"  data-theme="a">
 
-	<div data-role="header">
-		<h3 id="txtlevel" style="text-align: center">Result</h3>
-	</div>
+		<div data-role="header">
+			<h3 id="txtlevel" style="text-align: center">LEVEL</h3>
+		</div>
 
-	<div data-role="content">
+		<div data-role="content">
+			<p style="font-size: 1em; text-align: center;"> Click <strong>START</strong> to begin then Press <strong>DONE</strong> when finished typing </p>
+			<p id="tmr" align="center"></p>
+			<p id="nol" align="center"></p>
+			<form name="theForm" style="height:1280px">
+				<a href="#typingarea" onClick="beginIt()" name="start" data-role="button" data-inline="true">START</a> 	
+				<a href="#" data-role="button"  onClick="stopIt()"  data-inline="true">DONE</a>
+				<textarea name="given" onFocus="cheat()" style="width:700px; height:200px; resize: none;" disabled></textarea>
+				<input type="text" name="typed"  style="width:700px; height:200px"  />
+			</form>
+		
+		</div><!-- /content -->
+	
+	</div><!-- /page -->
+
+	<!-- Start of result page -->
+	<div data-role="page"  data-theme="a"  id="frm_result">
+
+		<div data-role="header">
+			<h3 id="txtlevel" style="text-align: center">Result</h3>
+		</div>
+
+		<div data-role="content">
 					
-		<p style="font-size: 1em; text-align: justify;" name="name_result" id="txtresult">result</p>
-		<a href="#frm_difficulty" data-rel="dialog" data-role="button" data-transition="pop" >Try Again</a>
-		<a href="#frm_main" data-role="button" >Main Menu</a>
-	</div><!-- /content -->
+			<p style="font-size: 1em; text-align: justify;" name="name_result" id="txtresult">result</p>
+			<a href="#frm_difficulty" data-rel="dialog" data-role="button" data-transition="pop" >Try Again</a>
+			<a href="#frm_main" data-role="button" >Main Menu</a>
+			
+		</div><!-- /content -->
 	
-	<div data-role="footer" >
-	<div data-role="navbar">
+		<div data-role="footer" >
+		
+			<div data-role="navbar">
 				<ul>
 					<li><a href="#" >Tweet</a></li>
-					<li>	<a href="#"  >Share</a></li>
+					<li><a href="#"  >Share</a></li>
 				</ul>
 			</div>
+
+		</div>
 	
+	</div><!-- /page -->
 
-</div>
-	
-</div><!-- /page -->
+	<!-- Start of last  result -->
+	<div data-role="page" data-theme="a"  id="frm_lastresult">
 
-<!-- Start of last  result -->
-<div data-role="page" data-theme="a"  id="frm_lastresult">
+		<div data-role="header">
+			<h3 id="txtlevel" style="text-align: center">Top Speeds</h3>
+		</div>
 
-	<div data-role="header">
-		<h3 id="txtlevel" style="text-align: center">Top Speeds</h3>
-	</div>
+		<div data-role="content">
+			<p id = "easy"></p>
+			<p id = "medium"></p>
+			<p id = "hard"></p>
+		</div><!-- /content -->
 
-	<div data-role="content">
-	<p id = "easy">
-	</p>
-	<p id = "medium">
-	</p>
-	<p id = "hard">
-	</p>
-	</div><!-- /content -->
-
-<div data-role="footer" data-position="fixed">
-				<div id="action-bar-area" data-role="actionbar">
-					<div data-role="back"></div>
-				</div>
+		<div data-role="footer" data-position="fixed">
+			<div id="action-bar-area" data-role="actionbar">
+				<div data-role="back"></div>
 			</div>
+		</div>
 	
-</div><!-- /page -->
+	</div><!-- /page -->
 
 
 </body>
